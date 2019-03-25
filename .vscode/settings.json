@@ -1,0 +1,6 @@
+{
+	"search-node-modules.path": "node_modules",
+	"terminal.integrated.env.osx": {
+		"PATH": "$PATH./node_modules/.bin"
+	}
+}
