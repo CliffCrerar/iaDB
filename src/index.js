@@ -7,3 +7,5 @@ var clientDatabase = iadb("devtestDB", 1);
 console.log(clientDatabase.iadbName());
 
 console.log(clientDatabase.iadbVersion());
+
+console.log(clientDatabase.iadbOpen());
