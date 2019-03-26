@@ -1,10 +1,35 @@
-import init from "./init_IaDB";
+import init from "./init";
 //import "../dev";
-(function (global) {
+(function(global) {
+	if (!init()) return;
 
+	const iadb = (idbName, idbVersion) => {
+		return new iadb.init(idbName, idbVersion);
+	};
 
+	iadb.prototype = {
+		iadbName: function() {
+			this.thisDatabaseName;
+			return "test naming function";
+		},
+		iadbVersion: function() {
+			return this.thisDatabaseVersion;
+		}
+	};
 
+	iadb.init = function(idbName, idbVersion) {
+		let self = this;
+		//console.log(arguments);
+		self.thisDatabaseName = idbName || "iadbDefualt";
+		self.thisDatabaseVersion = idbVersion || 1;
+		//console.log("self: ", self);
+	};
 
+	iadb.init.prototype = iadb.prototype;
+
+	global.iadb = iadb;
+
+	//const iaDB = () => {};
 
 	// request.onerror = err => {
 	// 	console.log("could not open: ", err);
@@ -54,4 +79,4 @@ import init from "./init_IaDB";
 	//});
 	//};
 	// };
-}(window));
+})(window);
