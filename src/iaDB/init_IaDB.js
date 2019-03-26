@@ -1,4 +1,4 @@
-module.exports = () => {
+const init = () => {
 	window.indexedDB =
 		window.indexedDB ||
 		window.mozIndexedDB ||
@@ -14,5 +14,11 @@ module.exports = () => {
 		window.alert(
 			"Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available."
 		);
+		console.error({ err: 'Browser not supported' });
+		return false;
+	} else {
+		console.log('Browser supports indexedDb datastore');
+		return true;
 	}
 };
+

@@ -1,60 +1,57 @@
 import init from "./init_IaDB";
 //import "../dev";
+(function (global) {
 
-init();
 
-const request = window.indexedDB.open("iaDB", 1);
 
-export default callback => {
-	let db;
 
-	request.onerror = err => {
-		console.log("could not open: ", err);
-	};
 
-	request.onsuccess = ev => {
-		db = ev.target.result;
-		console.log(
-			"Open DB",
-			ev.target.result.name,
-			"version",
-			(db = ev.target.result.version)
-		);
-	};
+	// request.onerror = err => {
+	// 	console.log("could not open: ", err);
+	// };
 
-	request.onupgradeneeded = function(event) {
-		console.log("DB upgrage is required");
-		// ? let db = event.target.result;
+	// request.onsuccess = ev => {
+	// 	db = ev.target.result;
+	// 	console.log(
+	// 		"Open DB",
+	// 		ev.target.result.name,
+	// 		"version",
+	// 		(db = ev.target.result.version)
+	// 	);
+	// };
 
-		// Create an objectStore to hold information about our customers. We're
-		// going to use "ssn" as our key path because it's guaranteed to be
-		// unique - or at least that's what I was told during the kickoff meeting.
+	// request.onupgradeneeded = function (event) {
+	// 	console.log("DB upgrage is required");
+	// 	// ? let db = event.target.result;
 
-		// var objectStore = db.createObjectStore("customers", { keyPath: "ssn" });
+	// Create an objectStore to hold information about our customers. We're
+	// going to use "ssn" as our key path because it's guaranteed to be
+	// unique - or at least that's what I was told during the kickoff meeting.
 
-		// Create an index to search customers by name. We may have duplicates
-		// so we can't use a unique index.
+	// var objectStore = db.createObjectStore("customers", { keyPath: "ssn" });
 
-		// ? objectStore.createIndex("name", "name", { unique: false });
+	// Create an index to search customers by name. We may have duplicates
+	// so we can't use a unique index.
 
-		// Create an index to search customers by email. We want to ensure that
-		// no two customers have the same email, so use a unique index.
+	// ? objectStore.createIndex("name", "name", { unique: false });
 
-		// ? objectStore.createIndex("email", "email", { unique: true });
+	// Create an index to search customers by email. We want to ensure that
+	// no two customers have the same email, so use a unique index.
 
-		// Use transaction oncomplete to make sure the objectStore creation is
-		// finished before adding data into it.
+	// ? objectStore.createIndex("email", "email", { unique: true });
 
-		// ? objectStore.transaction.oncomplete = function(event) {
+	// Use transaction oncomplete to make sure the objectStore creation is
+	// finished before adding data into it.
 
-		// Store values in the newly created objectStore.
-		// var customerObjectStore = db
-		//.transaction("customers", "readwrite")
-		//.objectStore("customers");
-		// customerData.forEach(function(customer) {
-		// customerObjectStore.add(customer);
-		//});
-		//};
-	};
-	return callback(db);
-};
+	// ? objectStore.transaction.oncomplete = function(event) {
+
+	// Store values in the newly created objectStore.
+	// var customerObjectStore = db
+	//.transaction("customers", "readwrite")
+	//.objectStore("customers");
+	// customerData.forEach(function(customer) {
+	// customerObjectStore.add(customer);
+	//});
+	//};
+	// };
+}(window));
